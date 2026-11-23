@@ -1,0 +1,45 @@
+{
+  "approved_base_commit": "244d138b15baedeac5d0c692bcb4a8128c136dea",
+  "revisions": {
+    "base": {
+      "commit": "244d138b15baedeac5d0c692bcb4a8128c136dea",
+      "parents": [],
+      "inputs": [
+        0,
+        1
+      ],
+      "outputs": [
+        0,
+        2
+      ]
+    },
+    "A": {
+      "commit": "1069b313db8e2b2b093526935df5a0e3210632c8",
+      "parents": [
+        "244d138b15baedeac5d0c692bcb4a8128c136dea"
+      ],
+      "inputs": [
+        0,
+        1
+      ],
+      "outputs": [
+        0,
+        2
+      ]
+    },
+    "B": {
+      "commit": "77b60ff45cb9c656c32cc48d38ee560833db95fe",
+      "parents": [
+        "244d138b15baedeac5d0c692bcb4a8128c136dea"
+      ],
+      "inputs": [
+        0,
+        1
+      ],
+      "outputs": [
+        0,
+        3
+      ]
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agent Handoff Contract decision receipt v1",
+  "type": "object",
+  "required": ["schema_version", "case_id", "title", "decision", "code", "checks", "packet_sha256", "approval_sha256", "fixture_commit", "verifier_commit", "verifier_source_sha256", "expected_blob_sha", "observed_blob_sha"],
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "git_oid": {"type": "string", "pattern": "^([0-9a-f]{40}|[0-9a-f]{64})$"},
+    "nullable_git_oid": {"anyOf": [{"$ref": "#/$defs/git_oid"}, {"type": "null"}]}
+  },
+  "properties": {
+    "schema_version": {"const": 1},
+    "case_id": {"type": "string"},
+    "title": {"type": "string"},
+    "decision": {"enum": ["accept", "reject"]},
+    "code": {"type": "string", "minLength": 1},
+    "checks": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["passed", "expected", "observed"],
+        "properties": {"passed": {"type": "boolean"}, "expected": {}, "observed": {}}
+      }
+    },
+    "packet_sha256": {"$ref": "#/$defs/sha256"},
+    "approval_sha256": {"anyOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]},
+    "fixture_commit": {"$ref": "#/$defs/git_oid"},
+    "verifier_source_sha256": {"$ref": "#/$defs/sha256"},
+    "verifier_commit": {"$ref": "#/$defs/nullable_git_oid"},
+    "expected_blob_sha": {"$ref": "#/$defs/nullable_git_oid"},
+    "observed_blob_sha": {"$ref": "#/$defs/nullable_git_oid"},
+    "review_patch": {"type": "string", "minLength": 1}
+  },
+  "if": {"properties": {"decision": {"const": "accept"}}},
+  "then": {"required": ["review_patch"], "properties": {"code": {"const": "ACCEPTED"}}},
+  "else": {"not": {"required": ["review_patch"]}}
+}

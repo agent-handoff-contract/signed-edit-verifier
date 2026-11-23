@@ -1,0 +1,459 @@
+{
+  "schema_version": 1,
+  "provenance": {
+    "execution": "Local run",
+    "generated_at": "2026-11-22T10:29:39+00:00",
+    "run_id": null,
+    "run_url": null,
+    "workflow_commit": null,
+    "verifier_commit": null,
+    "verifier_source_sha256": "e1bdf05f81579af1e5e17f2205832b1e703d331984e7cd3f71b55af2fd1586ab",
+    "source_files_sha256": {
+      ".github/workflows/verify-handoff.yml": "81eeebf655e0e8b2fb64ae4552fe3399e557466619b7f2dcdd503d0ec6d3b4d0",
+      "demo.py": "cc6090a9056e02d87cdd62b2a95026e527059e9cf298b1a6ebfaa78fc3bab396",
+      "fixtures/.gitattributes": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9",
+      "fixtures/approval-store/A-017.json": "098332231b34e59da235bc59079939569f4aba41827ca90434711616e88dad91",
+      "fixtures/approval-store/A-017.json.sig": "085771cd974e097b53e780e63d19388d4c80d2cd6d6bf963fecf198dc90296f8",
+      "fixtures/notes.md": "4dd122dfd9caf3b395f249903d83a08575bd4e4c9ff17bbba54b579b4af7e40d",
+      "fixtures/quickstart.md": "439848d4d9c17ec96e5efdd7887048642ddb1e39a83b8f7f2031b33960f5237c",
+      "fixtures/trust.json": "b11cf48c8626ffcc95a569458d8fed88ef2d008b3570c3dcee5a4b675ec8c49b",
+      "receiver.py": "b993d5d236eab57e2369bab82425c951e80877fd5df96b96259efb3c5b79a27c",
+      "render_report.py": "d2b6c159fbd8986d6736ae5574629b320f8d84e7a518dfd3996dfc6e795364d1",
+      "scenarios.py": "4a9f834bec2ecc51a90c25104b5f3c96c419297b692514dafb2907ba642c2299",
+      "schemas/exchange-reply-v1.json": "d3e5017389891513983e9447b78561a57fd7079e6c69dd51c6c2e84952fe3b93",
+      "schemas/packet-v1.json": "dd64576ca806d1b3855cffc2b240465f6707a08c4c75ffd0238b3817b3ab7840",
+      "schemas/receipt-v1.json": "074e166cab7d537691b5172e47362f9af79ad710270f9280814bed49020cd6f8"
+    }
+  },
+  "cases": [
+    {
+      "schema_version": 1,
+      "decision": "accept",
+      "code": "ACCEPTED",
+      "checks": {
+        "approval": {
+          "passed": true,
+          "expected": "A-017",
+          "observed": "A-017"
+        },
+        "signature": {
+          "passed": true,
+          "expected": "fixture-reviewer",
+          "observed": "fixture-reviewer"
+        },
+        "approval_record": {
+          "passed": true,
+          "expected": "valid signed approval for this ID and principal",
+          "observed": true
+        },
+        "revision": {
+          "passed": true,
+          "expected": "546d9f686d2e26fc7ed64dca696500f488b4c440",
+          "observed": {
+            "checkout": "546d9f686d2e26fc7ed64dca696500f488b4c440",
+            "packet": "546d9f686d2e26fc7ed64dca696500f488b4c440"
+          }
+        },
+        "authority": {
+          "passed": true,
+          "expected": [
+            "docs/quickstart.md"
+          ],
+          "observed": "docs/quickstart.md"
+        },
+        "scope": {
+          "passed": true,
+          "expected": "docs/quickstart.md",
+          "observed": {
+            "packet": "docs/quickstart.md",
+            "patch": [
+              "docs/quickstart.md"
+            ]
+          }
+        },
+        "unused": {
+          "passed": true,
+          "expected": "unused",
+          "observed": "unused"
+        },
+        "clean": {
+          "passed": true,
+          "expected": "clean checkout",
+          "observed": "clean checkout"
+        },
+        "patch": {
+          "passed": true,
+          "expected": "applies to pinned commit",
+          "observed": "applied"
+        },
+        "file_kind": {
+          "passed": true,
+          "expected": "one modified regular file, same mode",
+          "observed": ":100644 100644 86c185159b41643502bd611dd857e5149468fb7b 9c41fcd27c6d62c9b04c7d31b8f47caf72350422 M"
+        },
+        "edit": {
+          "passed": true,
+          "expected": "9c41fcd27c6d62c9b04c7d31b8f47caf72350422",
+          "observed": "9c41fcd27c6d62c9b04c7d31b8f47caf72350422"
+        }
+      },
+      "expected_blob_sha": "9c41fcd27c6d62c9b04c7d31b8f47caf72350422",
+      "observed_blob_sha": "9c41fcd27c6d62c9b04c7d31b8f47caf72350422",
+      "fixture_commit": "546d9f686d2e26fc7ed64dca696500f488b4c440",
+      "packet_sha256": "bb20dfb5d8b6058a7bc04ca6ae05775220519e0bc8127d94f369d6a587c10f85",
+      "approval_sha256": "098332231b34e59da235bc59079939569f4aba41827ca90434711616e88dad91",
+      "review_patch": "diff --git a/docs/quickstart.md b/docs/quickstart.md\n--- a/docs/quickstart.md\n+++ b/docs/quickstart.md\n@@ -1 +1 @@\n-Run the comand to start.\n+Run the command to start.\n",
+      "case_id": "approve",
+      "title": "The authorised typo correction",
+      "packet": {
+        "schema_version": 1,
+        "approval_id": "A-017",
+        "base_commit": "546d9f686d2e26fc7ed64dca696500f488b4c440",
+        "path": "docs/quickstart.md",
+        "patch": "diff --git a/docs/quickstart.md b/docs/quickstart.md\n--- a/docs/quickstart.md\n+++ b/docs/quickstart.md\n@@ -1 +1 @@\n-Run the comand to start.\n+Run the command to start.\n"
+      },
+      "expected_code": "ACCEPTED",
+      "expected_decision": "accept",
+      "verifier_commit": null,
+      "verifier_source_sha256": "e1bdf05f81579af1e5e17f2205832b1e703d331984e7cd3f71b55af2fd1586ab"
+    },
+    {
+      "schema_version": 1,
+      "decision": "reject",
+      "code": "MISSING_APPROVAL",
+      "checks": {
+        "approval": {
+          "passed": false,
+          "expected": "demo-absent",
+          "observed": null
+        }
+      },
+      "expected_blob_sha": null,
+      "observed_blob_sha": null,
+      "fixture_commit": "546d9f686d2e26fc7ed64dca696500f488b4c440",
+      "packet_sha256": "5cb10047655573a784f66b3b488632ef4456c63163a175f54ae4922914abea07",
+      "approval_sha256": null,
+      "case_id": "missing-approval",
+      "title": "The named approval is absent",
+      "packet": {
+        "schema_version": 1,
+        "approval_id": "demo-absent",
+        "base_commit": "546d9f686d2e26fc7ed64dca696500f488b4c440",
+        "path": "docs/quickstart.md",
+        "patch": "diff --git a/docs/quickstart.md b/docs/quickstart.md\n--- a/docs/quickstart.md\n+++ b/docs/quickstart.md\n@@ -1 +1 @@\n-Run the comand to start.\n+Run the command to start.\n"
+      },
+      "expected_code": "MISSING_APPROVAL",
+      "expected_decision": "reject",
+      "verifier_commit": null,
+      "verifier_source_sha256": "e1bdf05f81579af1e5e17f2205832b1e703d331984e7cd3f71b55af2fd1586ab"
+    },
+    {
+      "schema_version": 1,
+      "decision": "reject",
+      "code": "SCOPE_MISMATCH",
+      "checks": {
+        "approval": {
+          "passed": true,
+          "expected": "A-017",
+          "observed": "A-017"
+        },
+        "signature": {
+          "passed": true,
+          "expected": "fixture-reviewer",
+          "observed": "fixture-reviewer"
+        },
+        "approval_record": {
+          "passed": true,
+          "expected": "valid signed approval for this ID and principal",
+          "observed": true
+        },
+        "revision": {
+          "passed": true,
+          "expected": "546d9f686d2e26fc7ed64dca696500f488b4c440",
+          "observed": {
+            "checkout": "546d9f686d2e26fc7ed64dca696500f488b4c440",
+            "packet": "546d9f686d2e26fc7ed64dca696500f488b4c440"
+          }
+        },
+        "authority": {
+          "passed": true,
+          "expected": [
+            "docs/quickstart.md"
+          ],
+          "observed": "docs/quickstart.md"
+        },
+        "scope": {
+          "passed": false,
+          "expected": "docs/quickstart.md",
+          "observed": {
+            "packet": "docs/notes.md",
+            "patch": [
+              "docs/notes.md"
+            ]
+          }
+        }
+      },
+      "expected_blob_sha": "9c41fcd27c6d62c9b04c7d31b8f47caf72350422",
+      "observed_blob_sha": null,
+      "fixture_commit": "546d9f686d2e26fc7ed64dca696500f488b4c440",
+      "packet_sha256": "1e3b1a65bc478ef2817c894c621e173ad1a0570a89009f7906e1262438b0e1f9",
+      "approval_sha256": "098332231b34e59da235bc59079939569f4aba41827ca90434711616e88dad91",
+      "case_id": "wrong-scope",
+      "title": "A correction to a different file",
+      "packet": {
+        "schema_version": 1,
+        "approval_id": "A-017",
+        "base_commit": "546d9f686d2e26fc7ed64dca696500f488b4c440",
+        "path": "docs/notes.md",
+        "patch": "diff --git a/docs/notes.md b/docs/notes.md\n--- a/docs/notes.md\n+++ b/docs/notes.md\n@@ -1,3 +1,3 @@\n # Review notes\n \n-Wait for the reciept before closing the review.\n+Wait for the receipt before closing the review.\n"
+      },
+      "expected_code": "SCOPE_MISMATCH",
+      "expected_decision": "reject",
+      "verifier_commit": null,
+      "verifier_source_sha256": "e1bdf05f81579af1e5e17f2205832b1e703d331984e7cd3f71b55af2fd1586ab"
+    },
+    {
+      "schema_version": 1,
+      "decision": "reject",
+      "code": "EDIT_MISMATCH",
+      "checks": {
+        "approval": {
+          "passed": true,
+          "expected": "A-017",
+          "observed": "A-017"
+        },
+        "signature": {
+          "passed": true,
+          "expected": "fixture-reviewer",
+          "observed": "fixture-reviewer"
+        },
+        "approval_record": {
+          "passed": true,
+          "expected": "valid signed approval for this ID and principal",
+          "observed": true
+        },
+        "revision": {
+          "passed": true,
+          "expected": "546d9f686d2e26fc7ed64dca696500f488b4c440",
+          "observed": {
+            "checkout": "546d9f686d2e26fc7ed64dca696500f488b4c440",
+            "packet": "546d9f686d2e26fc7ed64dca696500f488b4c440"
+          }
+        },
+        "authority": {
+          "passed": true,
+          "expected": [
+            "docs/quickstart.md"
+          ],
+          "observed": "docs/quickstart.md"
+        },
+        "scope": {
+          "passed": true,
+          "expected": "docs/quickstart.md",
+          "observed": {
+            "packet": "docs/quickstart.md",
+            "patch": [
+              "docs/quickstart.md"
+            ]
+          }
+        },
+        "unused": {
+          "passed": true,
+          "expected": "unused",
+          "observed": "unused"
+        },
+        "clean": {
+          "passed": true,
+          "expected": "clean checkout",
+          "observed": "clean checkout"
+        },
+        "patch": {
+          "passed": true,
+          "expected": "applies to pinned commit",
+          "observed": "applied"
+        },
+        "file_kind": {
+          "passed": true,
+          "expected": "one modified regular file, same mode",
+          "observed": ":100644 100644 86c185159b41643502bd611dd857e5149468fb7b 01a8c0491375fd188758f98360ede520e7b454d2 M"
+        },
+        "edit": {
+          "passed": false,
+          "expected": "9c41fcd27c6d62c9b04c7d31b8f47caf72350422",
+          "observed": "01a8c0491375fd188758f98360ede520e7b454d2"
+        }
+      },
+      "expected_blob_sha": "9c41fcd27c6d62c9b04c7d31b8f47caf72350422",
+      "observed_blob_sha": "01a8c0491375fd188758f98360ede520e7b454d2",
+      "fixture_commit": "546d9f686d2e26fc7ed64dca696500f488b4c440",
+      "packet_sha256": "10c8db87dec7fe1c291ce7bf16d2fdc1b69d0e17f0e78da541a75c19e2d53a26",
+      "approval_sha256": "098332231b34e59da235bc59079939569f4aba41827ca90434711616e88dad91",
+      "case_id": "wrong-edit",
+      "title": "The right file and revision, with a different edit",
+      "packet": {
+        "schema_version": 1,
+        "approval_id": "A-017",
+        "base_commit": "546d9f686d2e26fc7ed64dca696500f488b4c440",
+        "path": "docs/quickstart.md",
+        "patch": "diff --git a/docs/quickstart.md b/docs/quickstart.md\n--- a/docs/quickstart.md\n+++ b/docs/quickstart.md\n@@ -1 +1 @@\n-Run the comand to start.\n+Run every command to start.\n"
+      },
+      "expected_code": "EDIT_MISMATCH",
+      "expected_decision": "reject",
+      "verifier_commit": null,
+      "verifier_source_sha256": "e1bdf05f81579af1e5e17f2205832b1e703d331984e7cd3f71b55af2fd1586ab"
+    },
+    {
+      "schema_version": 1,
+      "decision": "reject",
+      "code": "INVALID_SIGNATURE",
+      "checks": {
+        "approval": {
+          "passed": true,
+          "expected": "A-017",
+          "observed": "A-017"
+        },
+        "signature": {
+          "passed": false,
+          "expected": "fixture-reviewer",
+          "observed": null
+        }
+      },
+      "expected_blob_sha": null,
+      "observed_blob_sha": null,
+      "fixture_commit": "546d9f686d2e26fc7ed64dca696500f488b4c440",
+      "packet_sha256": "bb20dfb5d8b6058a7bc04ca6ae05775220519e0bc8127d94f369d6a587c10f85",
+      "approval_sha256": "9d248890b852adf532ce2756f28c88f0d26e22fbd4ef6e6f7d8ccaf20a74daff",
+      "case_id": "tampered-approval",
+      "title": "A signed approval was changed",
+      "packet": {
+        "schema_version": 1,
+        "approval_id": "A-017",
+        "base_commit": "546d9f686d2e26fc7ed64dca696500f488b4c440",
+        "path": "docs/quickstart.md",
+        "patch": "diff --git a/docs/quickstart.md b/docs/quickstart.md\n--- a/docs/quickstart.md\n+++ b/docs/quickstart.md\n@@ -1 +1 @@\n-Run the comand to start.\n+Run the command to start.\n"
+      },
+      "expected_code": "INVALID_SIGNATURE",
+      "expected_decision": "reject",
+      "verifier_commit": null,
+      "verifier_source_sha256": "e1bdf05f81579af1e5e17f2205832b1e703d331984e7cd3f71b55af2fd1586ab"
+    },
+    {
+      "schema_version": 1,
+      "decision": "reject",
+      "code": "ALREADY_CONSUMED",
+      "checks": {
+        "approval": {
+          "passed": true,
+          "expected": "A-017",
+          "observed": "A-017"
+        },
+        "signature": {
+          "passed": true,
+          "expected": "fixture-reviewer",
+          "observed": "fixture-reviewer"
+        },
+        "approval_record": {
+          "passed": true,
+          "expected": "valid signed approval for this ID and principal",
+          "observed": true
+        },
+        "revision": {
+          "passed": true,
+          "expected": "546d9f686d2e26fc7ed64dca696500f488b4c440",
+          "observed": {
+            "checkout": "546d9f686d2e26fc7ed64dca696500f488b4c440",
+            "packet": "546d9f686d2e26fc7ed64dca696500f488b4c440"
+          }
+        },
+        "authority": {
+          "passed": true,
+          "expected": [
+            "docs/quickstart.md"
+          ],
+          "observed": "docs/quickstart.md"
+        },
+        "scope": {
+          "passed": true,
+          "expected": "docs/quickstart.md",
+          "observed": {
+            "packet": "docs/quickstart.md",
+            "patch": [
+              "docs/quickstart.md"
+            ]
+          }
+        },
+        "unused": {
+          "passed": false,
+          "expected": "unused",
+          "observed": "consumed"
+        }
+      },
+      "expected_blob_sha": "9c41fcd27c6d62c9b04c7d31b8f47caf72350422",
+      "observed_blob_sha": null,
+      "fixture_commit": "546d9f686d2e26fc7ed64dca696500f488b4c440",
+      "packet_sha256": "bb20dfb5d8b6058a7bc04ca6ae05775220519e0bc8127d94f369d6a587c10f85",
+      "approval_sha256": "098332231b34e59da235bc59079939569f4aba41827ca90434711616e88dad91",
+      "case_id": "already-consumed",
+      "title": "The apply gate has already consumed this approval",
+      "packet": {
+        "schema_version": 1,
+        "approval_id": "A-017",
+        "base_commit": "546d9f686d2e26fc7ed64dca696500f488b4c440",
+        "path": "docs/quickstart.md",
+        "patch": "diff --git a/docs/quickstart.md b/docs/quickstart.md\n--- a/docs/quickstart.md\n+++ b/docs/quickstart.md\n@@ -1 +1 @@\n-Run the comand to start.\n+Run the command to start.\n"
+      },
+      "expected_code": "ALREADY_CONSUMED",
+      "expected_decision": "reject",
+      "verifier_commit": null,
+      "verifier_source_sha256": "e1bdf05f81579af1e5e17f2205832b1e703d331984e7cd3f71b55af2fd1586ab"
+    },
+    {
+      "schema_version": 1,
+      "decision": "reject",
+      "code": "STALE_REVISION",
+      "checks": {
+        "approval": {
+          "passed": true,
+          "expected": "A-017",
+          "observed": "A-017"
+        },
+        "signature": {
+          "passed": true,
+          "expected": "fixture-reviewer",
+          "observed": "fixture-reviewer"
+        },
+        "approval_record": {
+          "passed": true,
+          "expected": "valid signed approval for this ID and principal",
+          "observed": true
+        },
+        "revision": {
+          "passed": false,
+          "expected": "546d9f686d2e26fc7ed64dca696500f488b4c440",
+          "observed": {
+            "checkout": "337946b11dc36bc19aab753be9484dd4bb75978f",
+            "packet": "546d9f686d2e26fc7ed64dca696500f488b4c440"
+          }
+        }
+      },
+      "expected_blob_sha": "9c41fcd27c6d62c9b04c7d31b8f47caf72350422",
+      "observed_blob_sha": null,
+      "fixture_commit": "337946b11dc36bc19aab753be9484dd4bb75978f",
+      "packet_sha256": "bb20dfb5d8b6058a7bc04ca6ae05775220519e0bc8127d94f369d6a587c10f85",
+      "approval_sha256": "098332231b34e59da235bc59079939569f4aba41827ca90434711616e88dad91",
+      "case_id": "stale-revision",
+      "title": "The checkout has moved since approval",
+      "packet": {
+        "schema_version": 1,
+        "approval_id": "A-017",
+        "base_commit": "546d9f686d2e26fc7ed64dca696500f488b4c440",
+        "path": "docs/quickstart.md",
+        "patch": "diff --git a/docs/quickstart.md b/docs/quickstart.md\n--- a/docs/quickstart.md\n+++ b/docs/quickstart.md\n@@ -1 +1 @@\n-Run the comand to start.\n+Run the command to start.\n"
+      },
+      "expected_code": "STALE_REVISION",
+      "expected_decision": "reject",
+      "verifier_commit": null,
+      "verifier_source_sha256": "e1bdf05f81579af1e5e17f2205832b1e703d331984e7cd3f71b55af2fd1586ab"
+    }
+  ]
+}

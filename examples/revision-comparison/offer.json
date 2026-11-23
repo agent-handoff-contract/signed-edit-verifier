@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "id": "revision-comparison-01",
+  "question": "Which revision preserves the approved behaviour, and what did you check to decide?",
+  "example": {
+    "synthetic": true,
+    "approved_base_commit": "244d138b15baedeac5d0c692bcb4a8128c136dea",
+    "approval": "Only the exact base commit has approval. A and B are independent children of that base.",
+    "operation": "Multiply the input by factor using mathematical integers. The description is a display label only.",
+    "records": {
+      "base": {"description": "Double the sample", "factor": 2},
+      "A": {"description": "Twice the sample", "factor": 2},
+      "B": {"description": "Double the sample", "factor": 3}
+    }
+  },
+  "evidence": {
+    "case_id": "revision-comparison",
+    "ref": "offer.json#/example",
+    "reproduce": "python examples/revision-comparison/run.py"
+  },
+  "scope": {"authority": "analysis-only"}
+}

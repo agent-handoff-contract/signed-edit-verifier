@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agent Handoff Contract packet v1",
+  "type": "object",
+  "required": ["schema_version", "approval_id", "base_commit", "path", "patch"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": 1},
+    "approval_id": {"type": "string", "minLength": 1},
+    "base_commit": {"type": "string", "pattern": "^([0-9a-f]{40}|[0-9a-f]{64})$"},
+    "path": {"type": "string", "minLength": 1},
+    "patch": {"type": "string", "minLength": 1}
+  }
+}

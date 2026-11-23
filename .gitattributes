@@ -1,0 +1,12 @@
+/demo.py text eol=lf
+/render_report.py text eol=lf
+/scenarios.py text eol=lf
+/receiver.py text eol=lf
+/exchange.py text eol=lf
+/exchange.json text eol=lf
+/examples/revision-comparison/* text eol=lf
+/examples/typo-fix/receipts.json text eol=lf
+/tests/test_reflection.py text eol=lf
+/schemas/*.json text eol=lf
+/.github/ISSUE_TEMPLATE/exchange-reply.md text eol=lf
+/.github/workflows/verify-handoff.yml text eol=lf

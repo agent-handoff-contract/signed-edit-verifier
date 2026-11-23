@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "approval_id": "A-017",
+  "approver": "fixture-reviewer",
+  "base_commit": "546d9f686d2e26fc7ed64dca696500f488b4c440",
+  "path": "docs/quickstart.md",
+  "expected_blob_sha": "9c41fcd27c6d62c9b04c7d31b8f47caf72350422"
+}

@@ -1,0 +1,30 @@
+name: Verify the worked handoff
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  evidence:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
+        with:
+          persist-credentials: false
+      - name: Verify all scenarios and write the evidence
+        run: python3 demo.py
+      - name: Verify the optional exchange and reproduce the recorded comparison
+        run: |
+          python3 -m unittest discover -s tests -p test_reflection.py
+          python3 examples/revision-comparison/run.py > evidence/revision-comparison.json
+          cmp examples/revision-comparison/recorded.json evidence/revision-comparison.json
+      - name: Attach the report and machine-readable receipts
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: handoff-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: evidence/
+          if-no-files-found: error

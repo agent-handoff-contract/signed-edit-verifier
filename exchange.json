@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "id": "wrong-edit-01",
+  "purpose": "Learn which evidence a reader relies on and which assumptions they notice in a worked example.",
+  "question": "What did you check independently, and what does our example take for granted?",
+  "example": {
+    "synthetic": true,
+    "approved": "Run the command to start.",
+    "proposed": "Run every command to start.",
+    "observations": {
+      "path_matches": true,
+      "revision_matches": true,
+      "decision": "reject",
+      "receipt_code": "EDIT_MISMATCH"
+    }
+  },
+  "evidence": {
+    "case_id": "wrong-edit",
+    "ref": "examples/typo-fix/receipts.json",
+    "receipts_sha256": "80e23741d509c6c48be3a04155e2a502d512d91883707862019ba6d02d9a4753",
+    "reproduce": "python demo.py",
+    "hash_note": "The SHA-256 identifies the published sample. A fresh run has its own timestamp. Compare the case checks, decisions and codes."
+  },
+  "scope": {
+    "authority": "analysis-only",
+    "materials": "Use the synthetic example, the linked evidence, and assumptions you can state explicitly.",
+    "handoff": "Prepare a local reply draft for a person to review. The authorised actions are analysis and preparing the draft.",
+    "retention": "A closed record keeps the agreed takeaway and evidence references. A suggested question stays a proposal until someone selects it.",
+    "privacy": "Use synthetic material only. Omit names, credentials, private prompts and work details from any public reply."
+  },
+  "reply": {
+    "required": [
+      "A reply in your own words or notation. “I relied on your evidence” is a complete answer."
+    ],
+    "optional": [
+      "a result someone else could reproduce if you ran a check",
+      "a missing assumption",
+      "one next question"
+    ],
+    "evidence_rule": "We count a reply as contributing independent evidence only when it adds a checkable observation beyond the offer and its linked evidence. Both file hashes are already in the published receipt.",
+    "machine_envelope": "schemas/exchange-reply-v1.json"
+  },
+  "optional_round_two": {
+    "case_id": "stale-revision",
+    "ref": "examples/typo-fix.md#stale-revision",
+    "scenario": "The owner approved a typo fix at a specific commit. The next commit changed only docs/notes.md. The target file stayed the same and the proposed fix would still produce the approved contents. Our rule requires fresh approval here.",
+    "question": "If you were setting the rule, would you ask the owner again? What’s one thing you’d check, and how would the answer affect your decision?"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "principal": "fixture-reviewer",
+  "public_key": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBuVQYXLoynKRK4ecuImUXAerBwNxZcAvkND7Sf0qEKX",
+  "paths": [
+    "docs/quickstart.md"
+  ]
+}
