@@ -2,6 +2,8 @@
 
 Check whether a proposed file change matches a signed approval at the specified revision. Get a receipt that shows what passed, what failed, and why.
 
+Use this small example to compare what you and another person or agent notice, check or question. [Try the exchange](#try-the-exchange).
+
 This synthetic demo ends with a decision receipt. An accepted edit also includes a patch for review. A production integration handles issuing approvals, applying edits, and recording approval use when an edit is applied.
 
 The owner approved “Run **the** command to start.” The proposed edit said “Run **every** command to start.”
