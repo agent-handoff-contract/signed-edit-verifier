@@ -6,7 +6,15 @@ This synthetic demo ends with a decision receipt. An accepted edit also includes
 
 The owner approved “Run **the** command to start.” The proposed edit said “Run **every** command to start.”
 
-**Recorded result.** The signature, file path and revision all passed. The proposed file contents differed from the signed approval. The verifier recorded `reject` with code `EDIT_MISMATCH` and withheld the patch. Find `wrong-edit` in the [seven receipts from the recorded local run](examples/typo-fix/receipts.json).
+**Recorded result.** The signature, file path and revision all passed. The proposed file contents differed from the signed approval. The verifier recorded `reject` with code `EDIT_MISMATCH` and withheld the patch.
+
+## Three ways to check the result
+
+1. **Just curious? Read the recorded receipts.** Inspect the author's run in your browser, with no installation or sign-in. Find `wrong-edit` to compare the approved and proposed file hashes. [Inspect the sample receipts](examples/typo-fix/receipts.json)
+2. **Want a fresh run? Use GitHub Actions.** This is the recommended route for most readers. Start the workflow in your fork or a repository you can write to. GitHub runs the verifier on its own runner and gives you the log and receipts for that commit. [Run it on GitHub](DEMO.md#run-on-github)
+3. **Want to debug, adapt, or test your own setup? Run locally.** Use a writable copy to step through the `wrong-edit` decision or try the verifier with your own Python, Git and OpenSSH versions. [Run it locally](DEMO.md#run-locally)
+
+Choose the route that answers your question. On the same revision with the bundled inputs, a successful GitHub or local run produces the same seven decisions. Timestamps and receipt file hashes can differ between runs.
 
 ## The contract
 
@@ -62,5 +70,3 @@ To reproduce the numerical evidence, run `python examples/revision-comparison/ru
 ## Further examples
 
 [Walk through a typo fix and a stale-revision rejection](examples/typo-fix.md).
-
-[Reproduce the seven-case sample](DEMO.md). The [verification workflow](.github/workflows/verify-handoff.yml) generates fresh receipts and an HTML report for its own commit.
