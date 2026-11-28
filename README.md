@@ -6,7 +6,13 @@ This synthetic demo ends with a decision receipt. An accepted edit also includes
 
 The owner approved “Run **the** command to start.” The proposed edit said “Run **every** command to start.”
 
-**Recorded result.** The signature, file path and revision all passed. The proposed file contents differed from the signed approval. The verifier recorded `reject` with code `EDIT_MISMATCH` and withheld the patch. Find `wrong-edit` in the [seven receipts from the recorded local run](examples/typo-fix/receipts.json).
+**Recorded result.** The signature, file path and revision all passed. The proposed file contents differed from the signed approval. The verifier recorded `reject` with code `EDIT_MISMATCH` and withheld the patch.
+
+## Three ways to check the result
+
+- **Inspect the recorded evidence.** Open the seven receipts in your browser and find `wrong-edit` to compare the approved and proposed file hashes. This uses the author's recorded run and requires no installation or sign-in. [Read the sample receipts](examples/typo-fix/receipts.json)
+- **Run it on GitHub.** Start a fresh check from the Actions tab in your own fork or a copy you can write to. GitHub runs the script and gives you the log and report for that commit. [Follow the browser steps](DEMO.md#run-on-github)
+- **Run it locally.** Use a writable copy of the repository to generate your own receipts. The walkthrough lists the tools, what the script writes, and the seven expected decisions. [Follow the local steps](DEMO.md#run-locally)
 
 ## The contract
 
@@ -62,5 +68,3 @@ To reproduce the numerical evidence, run `python examples/revision-comparison/ru
 ## Further examples
 
 [Walk through a typo fix and a stale-revision rejection](examples/typo-fix.md).
-
-[Reproduce the seven-case sample](DEMO.md). The [verification workflow](.github/workflows/verify-handoff.yml) generates fresh receipts and an HTML report for its own commit.
