@@ -10,9 +10,11 @@ The owner approved “Run **the** command to start.” The proposed edit said �
 
 ## Three ways to check the result
 
-- **Inspect the recorded evidence.** Open the seven receipts in your browser and find `wrong-edit` to compare the approved and proposed file hashes. This uses the author's recorded run and requires no installation or sign-in. [Read the sample receipts](examples/typo-fix/receipts.json)
-- **Run it on GitHub.** Start a fresh check from the Actions tab in your own fork or a copy you can write to. GitHub runs the script and gives you the log and report for that commit. [Follow the browser steps](DEMO.md#run-on-github)
-- **Run it locally.** Use a writable copy of the repository to generate your own receipts. The walkthrough lists the tools, what the script writes, and the seven expected decisions. [Follow the local steps](DEMO.md#run-locally)
+1. **Just curious? Read the recorded receipts.** Inspect the author's run in your browser, with no installation or sign-in. Find `wrong-edit` to compare the approved and proposed file hashes. [Inspect the sample receipts](examples/typo-fix/receipts.json)
+2. **Want a fresh run? Use GitHub Actions.** This is the recommended route for most readers. Start the workflow in your fork or a repository you can write to. GitHub runs the verifier on its own runner and gives you the log and receipts for that commit. [Run it on GitHub](DEMO.md#run-on-github)
+3. **Want to debug, adapt, or test your own setup? Run locally.** Use a writable copy to step through the `wrong-edit` decision or try the verifier with your own Python, Git and OpenSSH versions. [Run it locally](DEMO.md#run-locally)
+
+Choose the route that answers your question. On the same revision with the bundled inputs, a successful GitHub or local run produces the same seven decisions. Timestamps and receipt file hashes can differ between runs.
 
 ## The contract
 
